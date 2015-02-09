@@ -20,6 +20,6 @@ File pdns-slave.service is a CoreOS service file. I run this as a Global service
 # Source Code
 Source and Dockerfile available at https://github.com/flantel/pdns-slave 
 
-The Docker image isi on Docker Hub at barryflanagan/pdns-slave
+The Docker image is on Docker Hub at barryflanagan/pdns-slave
 
 
