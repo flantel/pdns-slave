@@ -1,0 +1,16 @@
+[Unit]
+Description=PDNS Slave Instance
+After=docker.service
+Requires=docker.service
+
+[Service]
+ExecStartPre=/usr/bin/docker pull barryflanagan/pdns-slave:latest
+ExecStart=/usr/bin/docker run --rm --name pdns-slave -h %n.${COREOS_HOSTNAME} -e SUPERMASTER_IP=XXX.XXX.XXX.XXX -e SLAVE_DNSNAME=XXX.XXXXX.XXX -p 53:53/udp  barryflanagan/pdns-slave:latest
+ExecStop=/usr/bin/docker rm -f pdns-slave
+RestartSec=30s
+Restart=on-failure
+
+[X-Fleet]
+Global=true
+MachineMetadata=workload=loadbalancers
+
